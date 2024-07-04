@@ -66,15 +66,3 @@ function teachClass(todayClass: Subjects): string {
         return 'Invalid subject';
     }
 }
-
-function isDirector(employee: Director | Teacher): employee is Director {
-	return (employee as Director).workDirectorTasks !== undefined;
-}
-
-function executeWork(employee) {
-	if (isDirector(employee)) {
-		employee.workDirectorTasks();
-	} else {
-		employee.workTeacherTasks();
-	}
-}
