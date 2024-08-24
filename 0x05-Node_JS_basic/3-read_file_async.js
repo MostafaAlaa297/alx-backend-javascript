@@ -5,6 +5,7 @@ async function countStudents(path) {
         const data = await fs.readFile(path, 'utf-8');
         const lines = data.split('\n').filter(line => line.trim() !== '');
         const students = {};
+	let output = ""
 
         for (let i = 1; i < lines.length; i += 1) {
             const [firstName, lastName, age, field] = lines[i].split(',');
@@ -16,11 +17,11 @@ async function countStudents(path) {
         }
 
         const totalStudents = Object.values(students).reduce((acc, curr) => acc + curr.length, 0);
-        console.log(`Number of students: ${totalStudents}`);
+	output += `Number of students: ${totalStudents}\n`;
 
         for (const field in students) {
             if (students.hasOwnProperty(field)) {
-                console.log(`Number of students in ${field}: ${students[field].length}. List: ${students[field].join(', ')}`);
+		    output += `Number of student in ${filed}: ${students[filed].length}. List: ${students[filed].join(", ")}\n`;
             }
         }
     } catch (error) {
